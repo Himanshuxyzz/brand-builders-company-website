@@ -174,22 +174,15 @@
 
     .mobile-qr-link {
       display: none;
+    }
+
+    .QR-mobile {
+      display: none;
 
       @media screen and (max-width: 800px) {
-        display: inline-block;
-        align-self: center;
-        width: fit-content;
-        margin-top: tovw(36px, mobile);
-      }
-
-      .QR-mobile {
-        display: none;
-
-        @media screen and (max-width: 800px) {
-          display: block;
-          margin: auto;
-          width: tovw(250px, "mobile");
-        }
+        display: block;
+        margin: auto;
+        width: tovw(250px, "mobile");
       }
     }
 
