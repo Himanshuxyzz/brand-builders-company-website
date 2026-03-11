@@ -1,0 +1,483 @@
+@import "../../css/helpers.scss";
+
+/* ─── Shared section structure ──────────────────────────────────── */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: tovw(120px) 0;
+  overflow: hidden;
+
+  @media screen and (max-width: 800px) {
+    padding: tovw(64px, "mobile") 0;
+  }
+}
+
+.sectionAlt {
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.container {
+  width: 90%;
+  max-width: tovw(1400px);
+  margin: 0 auto;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    padding: 0 16px;
+  }
+}
+
+/* ─── Section header ─────────────────────────────────────────────── */
+.sectionHeader {
+  margin-bottom: tovw(64px);
+
+  @media screen and (max-width: 800px) {
+    margin-bottom: 24px;
+  }
+}
+
+.pretag {
+  display: inline-block;
+  font-size: tovw(12px);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ff6a00;
+  background: rgba(255, 106, 0, 0.08);
+  border: 1px solid rgba(255, 106, 0, 0.25);
+  border-radius: 999px;
+  padding: toem(4px, 12px) toem(14px, 12px);
+  margin-bottom: tovw(20px);
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(10px, "mobile");
+    margin-bottom: 12px;
+  }
+}
+
+.sectionTitle {
+  font-size: tovw(72px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 0%, #9ca3af 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: tovw(20px);
+
+  @media screen and (max-width: 800px) {
+    font-size: clamp(28px, 9vw, 40px);
+    margin-bottom: 12px;
+  }
+}
+
+.sectionSub {
+  font-size: tovw(22px);
+  color: rgba(255, 255, 255, 0.55);
+  max-width: tovw(640px);
+  line-height: 1.6;
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(14px, "mobile");
+  }
+}
+
+/* ─── PROCESS ─────────────────────────────────────────────────────── */
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: tovw(24px);
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.step {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: tovw(40px) tovw(32px);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  @media screen and (max-width: 800px) {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, border-color 0.4s ease;
+
+  @media screen and (max-width: 800px) {
+    padding: 18px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 106, 0, 0.04);
+      border-color: rgba(255, 106, 0, 0.25);
+    }
+  }
+}
+
+.stepNum {
+  font-size: tovw(48px);
+  font-weight: 900;
+  color: rgba(255, 106, 0, 0.3);
+  line-height: 1;
+  display: block;
+  margin-bottom: tovw(16px);
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(28px, "mobile");
+  }
+}
+
+.stepTitle {
+  font-size: tovw(22px);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: tovw(10px);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(16px, "mobile");
+  }
+}
+
+.stepDesc {
+  font-size: tovw(16px);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.55;
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(12px, "mobile");
+  }
+}
+
+/* ─── WHO WE WORK WITH ────────────────────────────────────────────── */
+.clientList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: tovw(20px);
+  padding: 0;
+  max-width: tovw(800px);
+
+  @media screen and (max-width: 800px) {
+    gap: 16px;
+  }
+}
+
+.clientItem {
+  display: flex;
+  align-items: flex-start;
+  gap: tovw(20px);
+  font-size: tovw(24px);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  opacity: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: tovw(16px);
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(14px, "mobile");
+    gap: tovw(12px, "mobile");
+    padding-bottom: 12px;
+  }
+}
+
+.bullet {
+  color: #ff6a00;
+  font-size: tovw(20px);
+  flex-shrink: 0;
+  margin-top: 0.1em;
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(14px, "mobile");
+  }
+}
+
+/* ─── WHY BRAND BUILDER'S ─────────────────────────────────────────── */
+.reasonsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: tovw(24px);
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+    gap: tovw(16px, "mobile");
+  }
+}
+
+.reasonCard {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: tovw(52px) tovw(48px);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  @media screen and (max-width: 800px) {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+
+  @media screen and (max-width: 800px) {
+    padding: 20px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 106, 0, 0.3);
+      box-shadow: 0 16px 64px rgba(255, 106, 0, 0.06);
+    }
+  }
+}
+
+.reasonTitle {
+  font-size: tovw(30px);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: tovw(14px);
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(18px, "mobile");
+  }
+}
+
+.reasonDesc {
+  font-size: tovw(18px);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(13px, "mobile");
+  }
+}
+
+/* ─── TECH + INDUSTRIES ───────────────────────────────────────────── */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: tovw(80px);
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.techGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: tovw(12px);
+
+  @media screen and (max-width: 800px) {
+    gap: 12px;
+  }
+}
+
+.industryList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: tovw(12px);
+
+  @media screen and (max-width: 800px) {
+    gap: 12px;
+  }
+}
+
+.techItem {
+  display: inline-flex;
+  align-items: center;
+  padding: toem(10px, 16px) toem(22px, 16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: tovw(16px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  letter-spacing: 0.02em;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+
+  @media screen and (max-width: 800px) {
+    font-size: 11px;
+    padding: 6px 14px;
+    letter-spacing: 0.03em;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(255, 106, 0, 0.1);
+      border-color: rgba(255, 106, 0, 0.4);
+      color: #ff6a00;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* ─── FOUNDER SECTION ───────────────────────────────────────────────── */
+.founderSection {
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    rgba(59, 130, 246, 0.04) 0%,
+    transparent 70%
+  );
+}
+
+.founderWrap {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: tovw(80px);
+  max-width: tovw(1200px);
+  margin: 0 auto;
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+    gap: tovw(36px, "mobile");
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+.founderPhotoWrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.founderPhoto {
+  position: relative;
+  width: tovw(260px);
+  height: tovw(260px);
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  /* Glowing ring */
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.12),
+    0 0 0 8px rgba(59, 130, 246, 0.12),
+    0 0 48px rgba(59, 130, 246, 0.2),
+    0 0 96px rgba(59, 130, 246, 0.1);
+
+  @media screen and (max-width: 800px) {
+    width: tovw(160px, "mobile");
+    height: tovw(160px, "mobile");
+  }
+}
+
+.founderGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(139, 92, 246, 0.08) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.founderContent {
+  display: flex;
+  flex-direction: column;
+  gap: tovw(24px);
+}
+
+.founderQuote {
+  font-size: tovw(26px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  border-left: 3px solid rgba(59, 130, 246, 0.6);
+  padding-left: tovw(32px);
+  margin: 0;
+  position: relative;
+
+  &::before {
+    content: "\201C";
+    font-size: tovw(80px);
+    font-style: normal;
+    font-weight: 900;
+    line-height: 1;
+    position: absolute;
+    top: tovw(-20px);
+    left: tovw(8px);
+    color: rgba(59, 130, 246, 0.2);
+    font-family: Georgia, serif;
+  }
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(14px, "mobile");
+    padding-left: tovw(20px, "mobile");
+    border-left-width: 2px;
+
+    &::before {
+      font-size: tovw(48px, "mobile");
+    }
+  }
+}
+
+.founderMeta {
+  display: flex;
+  flex-direction: column;
+  gap: tovw(6px);
+  padding-left: tovw(35px);
+
+  @media screen and (max-width: 800px) {
+    padding-left: 0;
+    align-items: center;
+  }
+}
+
+.founderName {
+  font-size: tovw(20px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(16px, "mobile");
+  }
+}
+
+.founderTitle {
+  font-size: tovw(15px);
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.03em;
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(11px, "mobile");
+  }
+}

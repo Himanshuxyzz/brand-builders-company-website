@@ -1,0 +1,455 @@
+@import "../../css/helpers";
+
+.pin-spacer {
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  padding: tovw(16px, "desktop-large", 12px) tovw(32px, "desktop-large", 16px);
+  grid-template-columns: repeat(3, 1fr);
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 16px 12px;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  a {
+    width: max-content;
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: column-reverse;
+    font-size: tovw(16px, "desktop-large", 12px);
+    line-height: 1.2;
+    max-width: tovw(537px);
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right;
+    display: flex;
+    align-items: flex-end;
+    gap: tovw(10px, "desktop-large", 6px);
+
+    @media screen and (max-width: 800px) {
+      max-width: unset;
+      margin: 0;
+      align-items: center;
+      margin-top: tovw(8px, "tablet", 8px);
+    }
+
+    svg {
+      width: tovw(16px, "desktop-large", 16px);
+      height: tovw(16px, "desktop-large", 16px);
+
+      @media screen and (max-width: 800px) {
+        width: tovw(14px, "tablet", 14px);
+        height: tovw(14px, "tablet", 14px);
+      }
+    }
+
+    a {
+      font-size: tovw(18px, "desktop-large", 14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: toem(4px, 16px);
+      background-color: white;
+      border-radius: 999999px;
+      color: black;
+      padding: toem(4px, 16px) toem(8px, 16px);
+
+      @media (hover: hover) {
+        transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+        &:hover {
+          color: var(--color-orange);
+          background-color: color-mix(
+            in srgb,
+            var(--color-black) 70%,
+            white 20%
+          );
+        }
+      }
+    }
+
+    .previous-works-btn {
+      font-size: tovw(15px, "desktop-large", 14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: toem(4px, 16px);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+
+      @media screen and (max-width: 800px) {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(0, 0, 0, 0.7);
+      }
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999999px;
+      color: white;
+      padding: tovw(10px, "desktop-large", 8px)
+        tovw(24px, "desktop-large", 20px);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+      @media (hover: hover) {
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+          border-color: rgba(255, 255, 255, 0.3);
+          box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+    &--buttons {
+      display: flex;
+      gap: tovw(8px, "desktop-large", 6px);
+    }
+  }
+}
+
+.brand-link {
+  text-decoration: none;
+  display: inline-block;
+  width: max-content;
+}
+
+.brand-text {
+  font-size: tovw(18px, "desktop-large", 14px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  white-space: pre-line;
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(255, 255, 255, 0.65) 40%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.65) 60%,
+    rgba(255, 255, 255, 0.65) 100%
+  );
+  background-size: 200% 100%;
+  background-position: -100% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  will-change: background-position, filter;
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(13px, "tablet", 11px);
+  }
+}
+
+.star {
+  width: tovw(679px);
+  height: tovw(120px);
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.section {
+  position: relative;
+  overflow-x: hidden;
+  padding-top: tovw(28px, "desktop-large", 24px);
+}
+
+.model-container {
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  right: tovw(40px);
+  width: tovw(420px, "desktop-large", 180px);
+  height: tovw(420px, "desktop-large", 180px);
+  transform: translateY(-50%);
+  opacity: 1;
+  pointer-events: none;
+
+  @media screen and (max-width: 800px) {
+    top: 8%;
+    right: -5vw;
+    width: 38vw;
+    height: 38vw;
+    opacity: 0.5;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, auto);
+  row-gap: tovw(32px, "desktop-large", 20px);
+
+  div:nth-child(3) {
+    height: tovw(115px);
+  }
+}
+
+.svg__container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  height: tovw(183px);
+
+  svg {
+    position: absolute;
+  }
+
+  .svg-we {
+    top: 0;
+    left: 0;
+
+    width: tovw(543px);
+    height: tovw(183px);
+  }
+
+  .svg-make {
+    right: 0;
+    bottom: 0;
+    width: tovw(924px);
+    height: tovw(183px);
+    transform: translateX(-35%);
+    transform-origin: center bottom;
+
+    @media screen and (max-width: 800px) {
+      transform: translateX(-25%);
+    }
+  }
+
+  .svg-coolshit {
+    width: tovw(1856px);
+    height: tovw(257px);
+  }
+
+  .svg-performs {
+    position: relative;
+    width: tovw(1118px);
+    height: tovw(115px);
+    transform: scaleY(1.016);
+    transform-origin: left bottom;
+  }
+
+  .svg-that {
+    position: relative;
+    width: tovw(415px);
+    height: tovw(115px);
+    margin-right: tovw(70px);
+    transform-origin: left center;
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: tovw(48px);
+  padding: tovw(24px) 0 tovw(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: tovw(48px);
+  position: relative;
+  z-index: 2;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  p {
+    font-size: tovw(16px, "desktop", 14px);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+
+    @media screen and (max-width: 800px) {
+      font-size: 13px;
+    }
+  }
+
+  svg {
+    width: tovw(20px);
+    height: tovw(10px);
+    opacity: 0.4;
+    flex-shrink: 0;
+
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+  }
+}
+.hero-title {
+  font-size: tovw(110px, "desktop-large", 70px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: tovw(48px) 0 tovw(32px);
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 2;
+
+  @media screen and (max-width: 800px) {
+    font-size: clamp(32px, 10vw, 52px);
+    margin: 20px 0 14px;
+    line-height: 1;
+  }
+
+  @media screen and (max-width: 380px) {
+    font-size: 9vw;
+  }
+}
+
+/* PREMIUM HERO AESTHETICS */
+.hero-title span {
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 32px rgba(255, 255, 255, 0.1);
+}
+
+.hero-title span:nth-child(n + 6) {
+  /* "ENGINEER MARKET LEADERS" */
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  text-shadow: 0 4px 48px rgba(59, 130, 246, 0.4);
+}
+
+/* OVERRIDE CTA FOR HIGH END FEEL */
+.header .cta a {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  @media screen and (max-width: 800px) {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(30, 30, 50, 0.85);
+  }
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: tovw(16px, "desktop-large", 12px) tovw(32px, "desktop-large", 24px);
+  border-radius: 100px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+@media (hover: hover) {
+  .header .cta a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+  }
+}
+
+/* ─── Hero Logos Strip (fills bottom of pinned hero) ───────────────── */
+.hero-logos {
+  width: 90%;
+  max-width: tovw(1551px);
+  margin: tovw(80px) auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+
+  @media screen and (max-width: 800px) {
+    margin-top: tovw(48px, "mobile");
+  }
+}
+
+.hero-logos-label {
+  font-size: tovw(20px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: tovw(40px);
+  text-align: center;
+
+  @media screen and (max-width: 800px) {
+    font-size: tovw(12px, "mobile");
+    letter-spacing: 3px;
+    margin-bottom: tovw(24px, "mobile");
+  }
+}
+
+.hero-logos-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: tovw(52px);
+  width: 100%;
+  flex-wrap: nowrap;
+
+  @media screen and (max-width: 800px) {
+    flex-wrap: wrap;
+    gap: tovw(16px, "mobile") tovw(24px, "mobile");
+  }
+}
+
+.hero-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: tovw(56px);
+  filter: grayscale(100%) brightness(0.5);
+  transition: filter 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, filter;
+  cursor: default;
+
+  @media screen and (max-width: 800px) {
+    height: tovw(36px, "mobile");
+    width: calc(33.33% - #{tovw(16px, "mobile")});
+  }
+}
+
+@media (hover: hover) {
+  .hero-logo-item:hover {
+    filter: grayscale(0%) brightness(1.15);
+    transform: scale(1.08);
+  }
+}
+
+.hero-logo-img {
+  height: 100%;
+  width: auto;
+  max-width: tovw(160px);
+  object-fit: contain;
+  display: block;
+
+  @media screen and (max-width: 800px) {
+    max-width: tovw(100px, "mobile");
+  }
+}
