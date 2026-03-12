@@ -70,14 +70,18 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
+            <span>Location</span>
+            <span>14 MARIMATA SQUARE</span>
+          </div>
+          <div>
             <span>get in touch</span>
             <Link
               className="link"
-              href="mailto:vinayak9verma@gmail.com"
+              href="mailto:brandbuilders1122@gmail.com"
               target="_blank"
               rel="noreferrer"
             >
-              vinayak9verma@gmail.com
+              brandbuilders1122@gmail.com
             </Link>
           </div>
           <div>
