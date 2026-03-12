@@ -6,7 +6,9 @@
   position: relative;
 
   @media screen and (max-width: 800px) {
+    min-height: auto;
     margin-top: 0;
+    padding-bottom: 64px;
   }
 
   h2 {
@@ -29,6 +31,12 @@
     align-items: center;
     height: 100vh;
     position: relative;
+
+    @media screen and (max-width: 800px) {
+      height: auto;
+      min-height: 40vh;
+      padding-top: 40px;
+    }
   }
 
   img {
