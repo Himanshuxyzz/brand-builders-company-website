@@ -1,12 +1,17 @@
 "use client";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import * as THREE from "three";
 import { Float, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { GLTF } from "three-stdlib";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useRef } from "react";
-import { useScrollytelling } from "~/lib/scrollytelling-client";
+import { useRef, useEffect } from "react";
+import s from "./hero.module.scss";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -25,7 +30,6 @@ type GLTFResult = GLTF & {
 useGLTF.preload("/models/Drone.glb");
 
 const DroneModel = () => {
-  const { timeline } = useScrollytelling();
   const { nodes, materials } = useGLTF(
     "/models/Drone.glb"
   ) as GLTFResult;
@@ -36,12 +40,33 @@ const DroneModel = () => {
   const rotorBRRef = useRef<THREE.Mesh>(null);
   const width = useThree((state) => state.viewport.width);
 
+  useEffect(() => {
+    if (!innerRef.current) return;
+
+    // Use GSAP ScrollTrigger directly for the drone rotation
+    // This allows it to rotate as we scroll past the Hero section
+    // without needing the section to be pinned.
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: `.${s["section"]}`,
+        start: "top top",
+        end: "bottom top",
+        scrub: 0.5,
+      },
+    });
+
+    tl.to(innerRef.current.rotation, {
+      y: Math.PI * 2,
+      ease: "none",
+    });
+
+    return () => {
+      tl.kill();
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, []);
+
   useFrame((_, delta) => {
-    if (!innerRef.current || !timeline?.scrollTrigger) return;
-
-    // Same scroll-driven Y rotation as before
-    innerRef.current.rotation.y = Math.PI * 2 * timeline.scrollTrigger.progress;
-
     // Spin the rotors continuously for a realistic drone effect
     const rotorSpeed = 25;
     if (rotorFLRef.current) rotorFLRef.current.rotation.y += rotorSpeed * delta;

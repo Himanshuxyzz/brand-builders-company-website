@@ -1,8 +1,12 @@
 @import "../../css/helpers";
 
-.pin-spacer {
+.section {
   position: relative;
-  z-index: 1;
+  overflow-x: hidden;
+  padding-top: tovw(28px, "desktop-large", 24px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -16,9 +20,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 16px 16px 12px;
+    padding: 24px 16px 12px;
     flex-direction: column;
-    gap: 6px;
+    gap: 12px;
   }
 
   a {
@@ -39,10 +43,7 @@
     gap: tovw(10px, "desktop-large", 6px);
 
     @media screen and (max-width: 800px) {
-      max-width: unset;
-      margin: 0;
-      align-items: center;
-      margin-top: tovw(8px, "tablet", 8px);
+      display: none;
     }
 
     svg {
@@ -128,6 +129,10 @@
   text-decoration: none;
   display: inline-block;
   width: max-content;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 }
 
 .brand-text {
@@ -163,7 +168,10 @@
   height: tovw(120px);
 
   @media screen and (max-width: 800px) {
-    display: none;
+    width: 80vw;
+    height: auto;
+    max-height: 60px;
+    order: -1;
   }
 }
 
